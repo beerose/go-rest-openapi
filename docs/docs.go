@@ -24,86 +24,6 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/auth/access-token": {
-            "post": {
-                "description": "Auth user by email and password",
-                "tags": [
-                    "auth"
-                ],
-                "summary": "GetAccessTokenByRefreshToken UserName",
-                "parameters": [
-                    {
-                        "description": "body data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/auth.AccessTokenRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/auth.DataUserAuthenticated"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/controllers.MessageResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/controllers.MessageResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/auth/login": {
-            "post": {
-                "description": "Auth user by email and password",
-                "tags": [
-                    "auth"
-                ],
-                "summary": "Login UserName",
-                "parameters": [
-                    {
-                        "description": "body data",
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/auth.LoginRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/auth.DataUserAuthenticated"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/controllers.MessageResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/controllers.MessageResponse"
-                        }
-                    }
-                }
-            }
-        },
         "/medicine": {
             "get": {
                 "description": "Get all Medicines on the system",
@@ -236,11 +156,6 @@ const docTemplate = `{
         },
         "/user": {
             "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
                 "description": "Get all Users on the system",
                 "tags": [
                     "user"
@@ -271,11 +186,6 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
                 "description": "Create new user on the system",
                 "consumes": [
                     "application/json"
@@ -322,11 +232,6 @@ const docTemplate = `{
         },
         "/user/{user_id}": {
             "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
                 "description": "Get Users by ID on the system",
                 "tags": [
                     "user"
@@ -365,68 +270,6 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "auth.AccessTokenRequest": {
-            "type": "object",
-            "required": [
-                "refreshToken"
-            ],
-            "properties": {
-                "refreshToken": {
-                    "type": "string",
-                    "example": "badbunybabybebe"
-                }
-            }
-        },
-        "auth.DataUserAuthenticated": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "type": "string",
-                    "example": "some@mail.com"
-                },
-                "firstName": {
-                    "type": "string",
-                    "example": "John"
-                },
-                "id": {
-                    "type": "integer",
-                    "example": 123
-                },
-                "lastName": {
-                    "type": "string",
-                    "example": "Doe"
-                },
-                "role": {
-                    "type": "string",
-                    "example": "admin"
-                },
-                "status": {
-                    "type": "boolean",
-                    "example": true
-                },
-                "userName": {
-                    "type": "string",
-                    "example": "UserName"
-                }
-            }
-        },
-        "auth.LoginRequest": {
-            "type": "object",
-            "required": [
-                "email",
-                "password"
-            ],
-            "properties": {
-                "email": {
-                    "type": "string",
-                    "example": "mail@mail.com"
-                },
-                "password": {
-                    "type": "string",
-                    "example": "Password123"
-                }
-            }
-        },
         "controllers.MessageResponse": {
             "type": "object",
             "properties": {
@@ -614,13 +457,6 @@ const docTemplate = `{
             }
         }
     },
-    "securityDefinitions": {
-        "ApiKeyAuth": {
-            "type": "apiKey",
-            "name": "Authorization",
-            "in": "header"
-        }
-    }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it

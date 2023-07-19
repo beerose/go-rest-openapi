@@ -11,12 +11,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// Security is a struct that contains the security of the application
-// @SecurityDefinitions.jwt
-type Security struct {
-	Authorization string `header:"Authorization" json:"Authorization"`
-}
-
 // @title Boilerplate Golang
 // @version 1.0
 // @description Documentation's Boilerplate Golang
@@ -28,10 +22,6 @@ type Security struct {
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @securityDefinitions.apikey ApiKeyAuth
-// @in header
-// @name Authorization
 
 // ApplicationV1Router is a function that contains all routes of the application
 // @host localhost:8080
@@ -45,7 +35,6 @@ func ApplicationV1Router(router *gin.Engine, db *gorm.DB) {
 			routerV1.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 		}
 
-		AuthRoutes(routerV1, adapter.AuthAdapter(db))
 		UserRoutes(routerV1, adapter.UserAdapter(db))
 		MedicineRoutes(routerV1, adapter.MedicineAdapter(db))
 	}

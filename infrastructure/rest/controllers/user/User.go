@@ -3,12 +3,13 @@ package user
 
 import (
 	"errors"
+	"net/http"
+	"strconv"
+
 	useCaseUser "github.com/gbrayhan/microservices-go/application/usecases/user"
 	domainErrors "github.com/gbrayhan/microservices-go/domain/errors"
 	"github.com/gbrayhan/microservices-go/infrastructure/rest/controllers"
 	"github.com/gin-gonic/gin"
-	"net/http"
-	"strconv"
 )
 
 // Controller is a struct that contains the user service
@@ -20,7 +21,6 @@ type Controller struct {
 // @Tags user
 // @Summary Create New UserName
 // @Description Create new user on the system
-// @Security ApiKeyAuth
 // @Accept  json
 // @Produce  json
 // @Param data body NewUserRequest true "body data"
@@ -49,7 +49,6 @@ func (c *Controller) NewUser(ctx *gin.Context) {
 // GetAllUsers godoc
 // @Tags user
 // @Summary Get all Users
-// @Security ApiKeyAuth
 // @Description Get all Users on the system
 // @Success 200 {object} []ResponseUser
 // @Failure 400 {object} MessageResponse
@@ -71,7 +70,6 @@ func (c *Controller) GetAllUsers(ctx *gin.Context) {
 // @Summary Get users by ID
 // @Description Get Users by ID on the system
 // @Param user_id path int true "id of user"
-// @Security ApiKeyAuth
 // @Success 200 {object} ResponseUser
 // @Failure 400 {object} MessageResponse
 // @Failure 500 {object} MessageResponse
@@ -99,7 +97,6 @@ func (c *Controller) GetUsersByID(ctx *gin.Context) {
 // @Summary Get users by ID
 // @Description Get Users by ID on the system
 // @Param user_id path int true "id of user"
-// @Security ApiKeyAuth
 // @Success 200 {object} ResponseUser
 // @Failure 400 {object} MessageResponse
 // @Failure 500 {object} MessageResponse
@@ -139,7 +136,6 @@ func (c *Controller) UpdateUser(ctx *gin.Context) {
 // @Summary Get users by ID
 // @Description Get Users by ID on the system
 // @Param user_id path int true "id of user"
-// @Security ApiKeyAuth
 // @Success 200 {object} MessageResponse
 // @Failure 400 {object} MessageResponse
 // @Failure 500 {object} MessageResponse

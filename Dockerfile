@@ -1,8 +1,7 @@
 FROM golang:1.20 AS builder
 WORKDIR /srv/go-app
 COPY . .
-RUN go build -o microservice
-
+RUN CGO_ENABLED=0 go build -o microservice
 
 FROM debian:buster
 WORKDIR /srv/go-app
