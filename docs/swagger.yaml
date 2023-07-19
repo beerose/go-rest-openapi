@@ -1,17 +1,12 @@
 basePath: /v1
 definitions:
-  controllers.MessageResponse:
-    properties:
-      message:
-        type: string
-    type: object
   github_com_gbrayhan_microservices-go_application_usecases_medicine.PaginationResultMedicine:
     properties:
       current:
         type: integer
       data:
         items:
-          $ref: "#/definitions/github_com_gbrayhan_microservices-go_domain_medicine.Medicine"
+          $ref: '#/definitions/github_com_gbrayhan_microservices-go_domain_medicine.Medicine'
         type: array
       limit:
         type: integer
@@ -67,10 +62,10 @@ definitions:
         example: Paracetamol
         type: string
     required:
-      - description
-      - ean_code
-      - laboratory
-      - name
+    - description
+    - ean_code
+    - laboratory
+    - name
     type: object
   user.MessageResponse:
     properties:
@@ -98,12 +93,12 @@ definitions:
         example: someUser
         type: string
     required:
-      - email
-      - firstName
-      - lastName
-      - password
-      - role
-      - user
+    - email
+    - firstName
+    - lastName
+    - password
+    - role
+    - user
     type: object
   user.ResponseUser:
     properties:
@@ -150,88 +145,88 @@ paths:
     get:
       description: Get all Medicines on the system
       parameters:
-        - description: limit
-          in: query
-          name: limit
-          required: true
-          type: string
-        - description: page
-          in: query
-          name: page
-          required: true
-          type: string
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: page
+        in: query
+        name: page
+        required: true
+        type: string
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/github_com_gbrayhan_microservices-go_application_usecases_medicine.PaginationResultMedicine"
+              $ref: '#/definitions/github_com_gbrayhan_microservices-go_application_usecases_medicine.PaginationResultMedicine'
             type: array
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/medicine.MessageResponse"
+            $ref: '#/definitions/medicine.MessageResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/medicine.MessageResponse"
+            $ref: '#/definitions/medicine.MessageResponse'
       summary: Get all Medicines
       tags:
-        - medicine
+      - medicine
     post:
       consumes:
-        - application/json
+      - application/json
       description: Create new medicine on the system
       parameters:
-        - description: body data
-          in: body
-          name: data
-          required: true
-          schema:
-            $ref: "#/definitions/medicine.NewMedicineRequest"
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/medicine.NewMedicineRequest'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/github_com_gbrayhan_microservices-go_domain_medicine.Medicine"
+            $ref: '#/definitions/github_com_gbrayhan_microservices-go_domain_medicine.Medicine'
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/medicine.MessageResponse"
+            $ref: '#/definitions/medicine.MessageResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/medicine.MessageResponse"
+            $ref: '#/definitions/medicine.MessageResponse'
       summary: Create New Medicine
       tags:
-        - medicine
+      - medicine
   /medicine/{medicine_id}:
     get:
       description: Get Medicines by ID on the system
       parameters:
-        - description: id of medicine
-          in: path
-          name: medicine_id
-          required: true
-          type: integer
+      - description: id of medicine
+        in: path
+        name: medicine_id
+        required: true
+        type: integer
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/github_com_gbrayhan_microservices-go_domain_medicine.Medicine"
+            $ref: '#/definitions/github_com_gbrayhan_microservices-go_domain_medicine.Medicine'
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/medicine.MessageResponse"
+            $ref: '#/definitions/medicine.MessageResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/medicine.MessageResponse"
+            $ref: '#/definitions/medicine.MessageResponse'
       summary: Get medicines by ID
       tags:
-        - medicine
+      - medicine
   /user:
     get:
       description: Get all Users on the system
@@ -240,71 +235,71 @@ paths:
           description: OK
           schema:
             items:
-              $ref: "#/definitions/user.ResponseUser"
+              $ref: '#/definitions/user.ResponseUser'
             type: array
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
       summary: Get all Users
       tags:
-        - user
+      - user
     post:
       consumes:
-        - application/json
+      - application/json
       description: Create new user on the system
       parameters:
-        - description: body data
-          in: body
-          name: data
-          required: true
-          schema:
-            $ref: "#/definitions/user.NewUserRequest"
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/user.NewUserRequest'
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/user.ResponseUser"
+            $ref: '#/definitions/user.ResponseUser'
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
       summary: Create New UserName
       tags:
-        - user
+      - user
   /user/{user_id}:
     get:
       description: Get Users by ID on the system
       parameters:
-        - description: id of user
-          in: path
-          name: user_id
-          required: true
-          type: integer
+      - description: id of user
+        in: path
+        name: user_id
+        required: true
+        type: integer
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/user.MessageResponse"
+            $ref: '#/definitions/user.MessageResponse'
       summary: Get users by ID
       tags:
-        - user
+      - user
 swagger: "2.0"

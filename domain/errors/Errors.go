@@ -20,17 +20,9 @@ const (
 	RepositoryError        = "RepositoryError"
 	repositoryErrorMessage = "error in repository operation"
 
-	// NotAuthenticated indicates an authentication error
-	NotAuthenticated             = "NotAuthenticated"
-	notAuthenticatedErrorMessage = "not Authenticated"
-
 	// TokenGeneratorError indicates an token generation error
 	TokenGeneratorError        = "TokenGeneratorError"
 	tokenGeneratorErrorMessage = "error in token generation"
-
-	// NotAuthorized indicates an authorization error
-	NotAuthorized             = "NotAuthorized"
-	notAuthorizedErrorMessage = "not authorized"
 
 	// UnknownError indicates an error that the app cannot find the cause for
 	UnknownError        = "UnknownError"
@@ -64,10 +56,6 @@ func NewAppErrorWithType(errType string) *AppError {
 		err = errors.New(alreadyExistsErrorMessage)
 	case RepositoryError:
 		err = errors.New(repositoryErrorMessage)
-	case NotAuthenticated:
-		err = errors.New(notAuthenticatedErrorMessage)
-	case NotAuthorized:
-		err = errors.New(notAuthorizedErrorMessage)
 	case TokenGeneratorError:
 		err = errors.New(tokenGeneratorErrorMessage)
 	default:

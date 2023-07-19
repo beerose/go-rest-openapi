@@ -264,14 +264,6 @@
         }
     },
     "definitions": {
-        "controllers.MessageResponse": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string"
-                }
-            }
-        },
         "github_com_gbrayhan_microservices-go_application_usecases_medicine.PaginationResultMedicine": {
             "type": "object",
             "properties": {

@@ -33,12 +33,6 @@ func Handler(c *gin.Context) {
 			case domainErrors.ResourceAlreadyExists:
 				c.JSON(http.StatusConflict, resp)
 				return
-			case domainErrors.NotAuthenticated:
-				c.JSON(http.StatusUnauthorized, resp)
-				return
-			case domainErrors.NotAuthorized:
-				c.JSON(http.StatusForbidden, resp)
-				return
 			case domainErrors.RepositoryError:
 				c.JSON(http.StatusInternalServerError, MessagesResponse{Message: "We are working to improve the flow of this request."})
 				return

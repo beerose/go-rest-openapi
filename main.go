@@ -3,12 +3,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/gbrayhan/microservices-go/infrastructure/repository/config"
-	errorsController "github.com/gbrayhan/microservices-go/infrastructure/rest/controllers/errors"
-	"github.com/gbrayhan/microservices-go/infrastructure/rest/middlewares"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/gbrayhan/microservices-go/infrastructure/repository/config"
+	errorsController "github.com/gbrayhan/microservices-go/infrastructure/rest/controllers/errors"
+	"github.com/gbrayhan/microservices-go/infrastructure/rest/middlewares"
 
 	limit "github.com/aviddiviner/gin-limit"
 	"github.com/gin-contrib/cors"
